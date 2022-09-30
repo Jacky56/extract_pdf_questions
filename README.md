@@ -27,7 +27,7 @@ docker build -t pdf_question_predictor .
 docker run -v <absolute directory to pdf folder>:/pdf <name of container>
 ```
 
-exmaple:
+example:
 ```bash
 docker run -v /usr/banana/pdf:/pdf pdf_question_predictor
 ```
