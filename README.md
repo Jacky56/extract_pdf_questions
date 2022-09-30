@@ -1,14 +1,20 @@
 # pdf question predictor
 
-this docker image is used to extract text sequences from pdf files and score 
+this api is used to extract text sequences from pdf files and score them
 if they possess interrogative properties.
 
+api docs:
+- localhost:8080/docs
+- https://pdf-reader-lkdpdhyb4q-lz.a.run.app/docs
 
 model used:
 - BERT: [shahrukhx01/question-vs-statement-classifier](https://huggingface.co/shahrukhx01/question-vs-statement-classifier)
 
 libraries used:
 - [requirements.txt](./requirements.txt)
+
+
+
 
 ## how to build container
 
@@ -24,12 +30,21 @@ docker build -t pdf_question_predictor .
 ## how to run container
 
 ```bash
-docker run -v <absolute directory to pdf folder>:/pdf <name of container>
+docker run -e PORT=8080 <name of container>
 ```
 
 exmaple:
 ```bash
-docker run -v /usr/banana/pdf:/pdf pdf_question_predictor
+docker run -e PORT=8080 pdf_question_predictor
+```
+
+post request:
+```bash
+curl -X 'POST' \
+  'https://pdf-reader-lkdpdhyb4q-lz.a.run.app/upload' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'file=@<path to file>;type=application/pdf'
 ```
 
 ## result

@@ -4,4 +4,4 @@ COPY . ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD python3 app.py
+CMD exec gunicorn --bind :$PORT --workers 1 --worker-class uvicorn.workers.UvicornWorker  --threads 8 app:app
