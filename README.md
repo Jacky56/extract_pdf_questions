@@ -33,7 +33,7 @@ docker build -t pdf_question_predictor .
 docker run -e PORT=8080 <name of container>
 ```
 
-exmaple:
+example:
 ```bash
 docker run -e PORT=8080 pdf_question_predictor
 ```
@@ -50,6 +50,11 @@ curl -X 'POST' \
 ## result
 
 result `json` files will be published at the mounted volume directory `<absolute directory to pdf folder>`: one `json` file per `pdf`.
+
+`json` name:
+```text
+<unix timestamp>_<pdf name>.json
+```
 
 `json` structure:
 ```json
